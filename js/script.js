@@ -1,9 +1,11 @@
 
-$.getJSON('http://anyorigin.com/dev/get?url=http%3A//travis.uslakes.info/Level.asp&callback=?', function(data) {
-  var html = $(data.contents);
+$.getJSON('http://anyorigin.com/dev/get?url=http%3A//hydromet.lcra.org/riverreport/report.aspx&callback=?', function(data) {
+  // remove images from scraped page, otherwise they'll 404 when we create the jquery object
+  var cleanHTML = data.contents.replace(/<img.*?\/>/g, '');
+  var html = $(cleanHTML);
   var maxLakeLevel = 681;
-  // var xpath = '/html/body/div[3]/table[2]/tbody/tr[1]/td[1]/div[1]/div[2]';
-  var lakeHeight = parseFloat(html.find('table:nth-of-type(2) tbody tr:first-of-type td:first-of-type div:first-of-type div:nth-of-type(2)').text());
+  // var xpath = '#GridView1/tr[3]/td[3];
+  var lakeHeight = parseFloat(html.find('#GridView1 tr:nth-of-type(3) td:nth-of-type(3)').text());
 
   if (lakeHeight >= maxLakeLevel) {
     document.querySelector('#status').textContent = 'Yup';
