@@ -13,6 +13,6 @@ $.getJSON('http://anyorigin.com/dev/get?url=http%3A//hydromet.lcra.org/riverrepo
     var waterLevel = document.querySelector('#water-level');
     waterLevel.style.height = (lakeHeight / maxLakeLevel) * 100 + '%';
     waterLevel.style.maxHeight = '9999px';
-    document.querySelector('#remainder').textContent = Math.round(maxLakeLevel - lakeHeight) + ' more feet to go'
+    document.querySelector('#remainder').textContent = Math.round(maxLakeLevel - lakeHeight) + ' More Feet To Go'
   }
 });
