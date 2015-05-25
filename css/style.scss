@@ -47,14 +47,35 @@ body {
   width: 100%;
   left: 0;
   background: #09c;
+  background-image: -webkit-radial-gradient(white 70%, transparent 87%);
   background-image: radial-gradient(white 70%, transparent 87%);
   background-size:4em 2em;
   background-position: -1em -1em;
   background-repeat: repeat-x;
   max-height: 0;
+  -webkit-transition: max-height 10s;
   transition: max-height 10s;
+  -webkit-animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
   animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
 } 
+
+@-webkit-keyframes waves {
+  from {  
+    background-color: #09c;
+    background-size:4em 1.9em;
+    background-position: -1em -1em;
+  }
+  50% {
+    background-color: #08d;
+    background-size:4em 1.55em;
+  }
+  to {  
+    background-color: #09c;
+    background-size:4em 1.9em;
+    background-position: 3em -1em;
+
+  }
+}
 
 @keyframes waves {
   from {  
