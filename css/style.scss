@@ -43,7 +43,7 @@ body {
 
 #water-level {
   position: absolute;
-  bottom: 0;
+  bottom: 1em; //to counteract the wave height so it looks accurate
   width: 100%;
   left: 0;
   background: #09c;
@@ -59,18 +59,24 @@ body {
   animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
 } 
 
+#blue-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 1em;
+  background: #09c;
+}
+
 @-webkit-keyframes waves {
   from {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: -1em -1em;
   }
   50% {
-    background-color: #08d;
     background-size:4em 1.55em;
   }
   to {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: 3em -1em;
 
@@ -79,16 +85,13 @@ body {
 
 @keyframes waves {
   from {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: -1em -1em;
   }
   50% {
-    background-color: #08d;
     background-size:4em 1.55em;
   }
   to {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: 3em -1em;
 
@@ -123,4 +126,57 @@ body {
   }
 }
 
+.water-level-marker {
+  z-index: 2000;
+  position: fixed;
+  text-shadow: 0px 1px 1px rgba(204,204,204,.8);
+  font-weight: 800;
+  color: #00394c;
+
+  [class*="level-"] {
+    position: fixed;
+    padding-top: 3px;
+    &:before {
+      content:"–";
+      color: black;
+      font-size: 22px;
+    }
+  }
+
+  $maxHeight: 730;
+  $notch: ((100/$maxHeight)*100)*1%; // how often you want a notch / total height
+
+  .level-100 {
+    bottom: $notch;
+  }
+  .level-200 {
+    bottom: $notch * 2;
+  }
+  .level-300 {
+    bottom: $notch * 3;
+  }
+  .level-400 {
+    bottom: $notch * 4;
+  }
+  .level-500 {
+    bottom: $notch * 5;
+  }
+  .level-600 {
+    bottom: $notch * 6;
+  }
+  .level-capacity {
+    bottom: ((681/$maxHeight)*100)*1%;
+    font-weight: 400;
+  }
+  .level-700 {
+    display: none;
+    bottom: $notch * 7;
+  }
+
+  @media screen and (min-height: 600px) { 
+    .level-700 {
+      display: block;
+    }
+  }
+}
 

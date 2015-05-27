@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body {
   height: 100%;
   width: 100%;
@@ -25,7 +26,7 @@ body {
   line-height: 1;
   font-family: Impact, "Roboto-Black", "AvenirNext-Heavy", Helvetica, Verdana, sans-serif;
   color: #fff;
-  text-shadow: 0px -1px 1px rgba(51, 51, 51, .3); }
+  text-shadow: 0px -1px 1px rgba(51, 51, 51, 0.3); }
 
 @media screen and (min-width: 450px) {
   #text {
@@ -36,7 +37,7 @@ body {
     font-size: 170px; } }
 #water-level {
   position: absolute;
-  bottom: 0;
+  bottom: 1em;
   width: 100%;
   left: 0;
   background: #09c;
@@ -51,28 +52,30 @@ body {
   -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
   animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
 
+#blue-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 1em;
+  background: #09c; }
+
 @-webkit-keyframes waves {
   from {
-    background-color: #09c;
     background-size: 4em 1.9em;
     background-position: -1em -1em; }
   50% {
-    background-color: #08d;
     background-size: 4em 1.55em; }
   to {
-    background-color: #09c;
     background-size: 4em 1.9em;
     background-position: 3em -1em; } }
 @keyframes waves {
   from {
-    background-color: #09c;
     background-size: 4em 1.9em;
     background-position: -1em -1em; }
   50% {
-    background-color: #08d;
     background-size: 4em 1.55em; }
   to {
-    background-color: #09c;
     background-size: 4em 1.9em;
     background-position: 3em -1em; } }
 #donate {
@@ -96,5 +99,39 @@ body {
     font-size: 18px;
     left: 15%;
     width: 70%; } }
+.water-level-marker {
+  z-index: 2000;
+  position: fixed;
+  text-shadow: 0px 1px 1px rgba(204, 204, 204, 0.8);
+  font-weight: 800;
+  color: #00394c; }
+  .water-level-marker [class*="level-"] {
+    position: fixed;
+    padding-top: 3px; }
+    .water-level-marker [class*="level-"]:before {
+      content: "–";
+      color: black;
+      font-size: 22px; }
+  .water-level-marker .level-100 {
+    bottom: 13.69863%; }
+  .water-level-marker .level-200 {
+    bottom: 27.39726%; }
+  .water-level-marker .level-300 {
+    bottom: 41.09589%; }
+  .water-level-marker .level-400 {
+    bottom: 54.79452%; }
+  .water-level-marker .level-500 {
+    bottom: 68.49315%; }
+  .water-level-marker .level-600 {
+    bottom: 82.19178%; }
+  .water-level-marker .level-capacity {
+    bottom: 93.28767%;
+    font-weight: 400; }
+  .water-level-marker .level-700 {
+    display: none;
+    bottom: 95.89041%; }
+  @media screen and (min-height: 600px) {
+    .water-level-marker .level-700 {
+      display: block; } }
 
 /*# sourceMappingURL=style.css.map */
