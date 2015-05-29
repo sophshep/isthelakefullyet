@@ -147,38 +147,58 @@ body {
     }
   }
 
-  $maxHeight: 730;
-  $notch: ((100/$maxHeight)*100)*1%; // how often you want a notch / total height
+  .tenths {
+    display: none;
+  }
+  .quarters {
+    display: block;
+  }
 
-  .level-100 {
+  $maxHeight: 110;
+  $notch: ((10/$maxHeight)*100)*1%; // how often you want a notch / total height
+
+  .level-10 {
     bottom: $notch;
   }
-  .level-200 {
+  .level-20 {
     bottom: $notch * 2;
   }
-  .level-300 {
+  .level-25 {
+    bottom: $notch * 2.5;
+  }
+  .level-30 {
     bottom: $notch * 3;
   }
-  .level-400 {
+  .level-40 {
     bottom: $notch * 4;
   }
-  .level-500 {
+  .level-50 {
     bottom: $notch * 5;
   }
-  .level-600 {
+  .level-60 {
     bottom: $notch * 6;
   }
-  .level-capacity {
-    bottom: ((681/$maxHeight)*100)*1%;
-    font-weight: 400;
-  }
-  .level-700 {
-    display: none;
+  .level-70 {
     bottom: $notch * 7;
   }
+  .level-75 {
+    bottom: $notch * 7.5;
+  }
+  .level-80 {
+    bottom: $notch * 8;
+  }
+  .level-90 {
+    bottom: $notch * 9;
+  }
+  .level-capacity {
+    bottom: ((100/$maxHeight)*100)*1%;
+  }
 
-  @media screen and (min-height: 600px) { 
-    .level-700 {
+  @media screen and (min-height: 600px) {
+    .quarters {
+      display: none;
+    }
+    .tenths {
       display: block;
     }
   }

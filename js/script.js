@@ -1,20 +1,27 @@
+function dataFromColumn($row, column) {
+  return parseInt($row.find('td:nth-of-type(' + column + ')').text().replace(/,/g, ''), 10);
+}
+
+function round(num, precision) {
+  return Math.round(num * Math.pow(10, precision)) / Math.pow(10, precision);
+}
 
 $.getJSON('http://anyorigin.com/dev/get?url=http%3A//hydromet.lcra.org/riverreport/report.aspx&callback=?', function(data) {
   // remove images from scraped page, otherwise they'll 404 when we create the jquery object
   var cleanHTML = data.contents.replace(/<img.*?\/>/g, '');
-  var html = $(cleanHTML);
-  var maxLakeLevel = 681;
-  var maxLakeMarker = 730;
-  // var xpath = '#GridView1/tr[3]/td[3];
-  var lakeHeight = parseFloat(html.find('#GridView1 tr:nth-of-type(3) td:nth-of-type(3)').text());
+  var $dataRow = $(cleanHTML).find('#GridView1 tr:nth-of-type(3)');
+  var maxLakeLevel = dataFromColumn($dataRow, 6);
+  var maxLakeMarker = 1.1 * maxLakeLevel;
+  var lakeHeight = dataFromColumn($dataRow, 7);
 
-  if (lakeHeight >= 681) {
+  if (lakeHeight >= maxLakeLevel) {
     document.querySelector('#status').textContent = 'Yup';
   } else {
     var waterLevel = document.querySelector('#water-level');
-    // waterLevel.style.height = (lakeHeight / maxLakeLevel) * 100 + '%';
-    waterLevel.style.height = (lakeHeight / maxLakeMarker) * 100 + '%';
+    waterLevel.style.height = (100 * (lakeHeight / maxLakeMarker)) + '%';
     waterLevel.style.maxHeight = '9999px';
-    document.querySelector('#remainder').textContent = Math.round(maxLakeLevel - lakeHeight) + ' More Feet To Go'
+    document.querySelector('#remainder').textContent =
+      round(100 * (lakeHeight / maxLakeLevel), 1) + '% Full, ' +
+      round(100 * (1 - (lakeHeight / maxLakeLevel)), 1) + '% To Go';
   }
 });
