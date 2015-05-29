@@ -14,7 +14,7 @@ function dataFromColumn($row, column) {
 }
 
 function getLevels(callback) {
-  var dataURI = 'http://anyorigin.com/dev/get?url=' +
+  var dataURI = 'http://anyorigin.com/dev/get/?url=' +
     encodeURIComponent('http://hydromet.lcra.org/riverreport/report.aspx') +
     '&callback=?';
   $.getJSON(dataURI, function(data) {
@@ -81,11 +81,16 @@ function displayVolume() {
   );
 }
 
-if (window.location.hash === '#volume') {
-  getLevels(displayVolume);
-} else {
-  getLevels(displayDepth);
+function loadPage() {
+  if (window.location.hash === '#volume') {
+    getLevels(displayVolume);
+  } else {
+    getLevels(displayDepth);
+  }
 }
+
+loadPage();
+window.setInterval(loadPage, 5 * 60 * 1000); // refresh data every 5 minutes
 
 $('#display-switch a').on('click', function(e) {
   e.preventDefault();
