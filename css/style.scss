@@ -142,13 +142,16 @@ body {
   [class*="level-"] {
     position: fixed;
     font-size: 14px;
-    line-height: 22px;
-    &:before {
-      content:"–";
-      color: black;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1;
+    line-height: 1;
+    border-bottom: 3px solid #000;
+    width: 15px;
+
+    span {
+      display: block;
+      position: relative;
+      top: 9px;
+      left: 22px;
+      width: 10em;
     }
   }
 
