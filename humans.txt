@@ -12,6 +12,7 @@
 
     Tom Grochowicz -- @tgrochowicz
     Lower Colorado River Authority -- @lcra
+    Trey Philips -- @treyp
 
 # TECHNOLOGY COLOPHON
 
