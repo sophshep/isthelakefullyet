@@ -22,15 +22,13 @@
         <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
         <link rel="stylesheet" href="css/style.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
-        <script src="js/script.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
     </head>
     <body>
 
         <div id="text">
-          <span id="status">NOPE</span>
+          <span id="status">Loading&hellip;</span>
           <span id="remainder"></span>
         </div>
         <div id="donate">
@@ -39,54 +37,90 @@
           </p>
         </div>
         <div class="water-level-marker">
-          <div class="level-10 tenths">
-            10%
+          <div class="depth">
+            <div class="level-100">
+              100
+            </div>
+            <div class="level-200">
+              200
+            </div>
+            <div class="level-300">
+              300
+            </div>
+            <div class="level-400">
+              400
+            </div>
+            <div class="level-500">
+              500
+            </div>
+            <div class="level-600">
+              600
+            </div>
+            <div class="level-capacity">
+              Lake Is Full (681 ft.)
+            </div>
+            <div class="level-700">
+              700
+            </div>
           </div>
-          <div class="level-20 tenths">
-            20%
-          </div>
-          <div class="level-25 quarters">
-            25%
-          </div>
-          <div class="level-30 tenths">
-            30%
-          </div>
-          <div class="level-40 tenths">
-            40%
-          </div>
-          <div class="level-50 tenths quarters">
-            50%
-          </div>
-          <div class="level-60 tenths">
-            60%
-          </div>
-          <div class="level-70 tenths">
-            70%
-          </div>
-          <div class="level-75 quarters">
-            75%
-          </div>
-          <div class="level-80 tenths">
-            80%
-          </div>
-          <div class="level-90 tenths">
-            90%
-          </div>
-          <div class="level-capacity tenths quarters">
-            100% - Lake Is Full (681 ft.)
+          <div class="volume">
+            <div class="level-10 tenths">
+              10%
+            </div>
+            <div class="level-20 tenths">
+              20%
+            </div>
+            <div class="level-25 quarters">
+              25%
+            </div>
+            <div class="level-30 tenths">
+              30%
+            </div>
+            <div class="level-40 tenths">
+              40%
+            </div>
+            <div class="level-50 tenths quarters">
+              50%
+            </div>
+            <div class="level-60 tenths">
+              60%
+            </div>
+            <div class="level-70 tenths">
+              70%
+            </div>
+            <div class="level-75 quarters">
+              75%
+            </div>
+            <div class="level-80 tenths">
+              80%
+            </div>
+            <div class="level-90 tenths">
+              90%
+            </div>
+            <div class="level-capacity tenths quarters">
+              100% (681 ft.)
+            </div>
           </div>
         </div>
         <div id="water-level"></div>
         <div id="blue-fill"></div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <div id="display-switch">
+          Display:
+          <a class="depth" data-choice="depth">Depth</a>
+          |
+          <a class="volume" data-choice="volume">Volume</a>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+        <script src="js/script.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-408491-11', 'auto');
-  ga('send', 'pageview');
+          ga('create', 'UA-408491-11', 'auto');
+          ga('send', 'pageview');
 
-</script>
+        </script>
     </body>
 </html>

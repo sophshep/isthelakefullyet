@@ -1,3 +1,5 @@
+$waterBlue: #09c;
+
 html, body {
  height: 100%;
  width: 100%; 
@@ -49,7 +51,7 @@ body {
   bottom: 1em; //to counteract the wave height so it looks accurate
   width: 100%;
   left: 0;
-  background: #09c;
+  background: $waterBlue;
   background-image: -webkit-radial-gradient(white 70%, transparent 87%);
   background-image: radial-gradient(white 70%, transparent 87%);
   background-size:4em 2em;
@@ -69,7 +71,7 @@ body {
   width: 100%;
   left: 0;
   height: 1em;
-  background: #09c;
+  background: $waterBlue;
 }
 
 @-webkit-keyframes waves {
@@ -140,67 +142,144 @@ body {
   [class*="level-"] {
     position: fixed;
     font-size: 14px;
+    line-height: 22px;
     &:before {
       content:"–";
       color: black;
       font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
     }
   }
 
-  .tenths {
+  .depth {
     display: none;
-  }
-  .quarters {
-    display: block;
+
+    $fullDepth: 681;
+    $maxDepth: 730;
+    // how often you want a notch / total height
+    $depthNotch: ((100 / $maxDepth) * 100) * 1%;
+
+    .level-100 {
+      bottom: $depthNotch;
+    }
+    .level-200 {
+      bottom: $depthNotch * 2;
+    }
+    .level-300 {
+      bottom: $depthNotch * 3;
+    }
+    .level-400 {
+      bottom: $depthNotch * 4;
+    }
+    .level-500 {
+      bottom: $depthNotch * 5;
+    }
+    .level-600 {
+      bottom: $depthNotch * 6;
+    }
+    .level-700 {
+      display: none;
+      bottom: $depthNotch * 7;
+    }
+    .level-capacity {
+      bottom: (($fullDepth / $maxDepth) * 100) * 1%;
+      font-weight: normal;
+    }
+
+    @media screen and (min-height: 600px) {
+      .level-700 {
+        display: block;
+      }
+    }
   }
 
-  $maxHeight: 110;
-  $notch: ((10/$maxHeight)*100)*1%; // how often you want a notch / total height
+  .volume {
+    display: none;
 
-  .level-10 {
-    bottom: $notch;
-  }
-  .level-20 {
-    bottom: $notch * 2;
-  }
-  .level-25 {
-    bottom: $notch * 2.5;
-  }
-  .level-30 {
-    bottom: $notch * 3;
-  }
-  .level-40 {
-    bottom: $notch * 4;
-  }
-  .level-50 {
-    bottom: $notch * 5;
-  }
-  .level-60 {
-    bottom: $notch * 6;
-  }
-  .level-70 {
-    bottom: $notch * 7;
-  }
-  .level-75 {
-    bottom: $notch * 7.5;
-  }
-  .level-80 {
-    bottom: $notch * 8;
-  }
-  .level-90 {
-    bottom: $notch * 9;
-  }
-  .level-capacity {
-    bottom: ((100/$maxHeight)*100)*1%;
-  }
-
-  @media screen and (min-height: 600px) {
-    .quarters {
+    .tenths {
       display: none;
     }
-    .tenths {
+    .quarters {
+      display: block;
+    }
+
+    $maxVolume: 107.2;
+    // how often you want a notch / total height
+    $volumeNotch: ((10 / $maxVolume) * 100) * 1%;
+
+    .level-10 {
+      bottom: $volumeNotch;
+    }
+    .level-20 {
+      bottom: $volumeNotch * 2;
+    }
+    .level-25 {
+      bottom: $volumeNotch * 2.5;
+    }
+    .level-30 {
+      bottom: $volumeNotch * 3;
+    }
+    .level-40 {
+      bottom: $volumeNotch * 4;
+    }
+    .level-50 {
+      bottom: $volumeNotch * 5;
+    }
+    .level-60 {
+      bottom: $volumeNotch * 6;
+    }
+    .level-70 {
+      bottom: $volumeNotch * 7;
+    }
+    .level-75 {
+      bottom: $volumeNotch * 7.5;
+    }
+    .level-80 {
+      bottom: $volumeNotch * 8;
+    }
+    .level-90 {
+      bottom: $volumeNotch * 9;
+    }
+    .level-capacity {
+      bottom: ((100 / $maxVolume) * 100) * 1%;
+    }
+
+    @media screen and (min-height: 600px) {
+      .quarters {
+        display: none;
+      }
+      .tenths {
+        display: block;
+      }
+    }
+  }
+
+  &.with-depth {
+    .depth {
+      display: block;
+    }
+  }
+
+  &.with-volume {
+    .volume {
       display: block;
     }
   }
 }
 
+#display-switch {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+  a {
+    cursor: pointer;
+    color: $waterBlue;
+    text-shadow: 0px 1px 1px rgba(255,255,255,.8);
+
+    &.selected {
+      color: #000;
+    }
+  }
+}

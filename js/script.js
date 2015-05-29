@@ -1,27 +1,99 @@
+var waterLevels = {
+  currentDepth: null,
+  fullDepth: 681,
+  maxDepth: 730,
+  currentVolume: null,
+  fullVolume: null,
+  maxVolume: null
+};
+
 function dataFromColumn($row, column) {
-  return parseInt($row.find('td:nth-of-type(' + column + ')').text().replace(/,/g, ''), 10);
+  return parseFloat($row.find('td:nth-of-type(' + column + ')')
+    .text()
+    .replace(/[^\d.]/g, ''));
+}
+
+function getLevels(callback) {
+  var dataURI = 'http://anyorigin.com/dev/get?url=' +
+    encodeURIComponent('http://hydromet.lcra.org/riverreport/report.aspx') +
+    '&callback=?';
+  $.getJSON(dataURI, function(data) {
+      // remove images from scraped page, otherwise they'll 404 when we create the jquery object
+      var cleanHTML = data.contents.replace(/<img.*?\/>/g, '');
+      var $dataRow = $(cleanHTML).find('#GridView1 tr:nth-of-type(3)');
+      waterLevels.currentDepth = dataFromColumn($dataRow, 3);
+      waterLevels.fullVolume = dataFromColumn($dataRow, 6);
+      waterLevels.maxVolume = 1.072 * waterLevels.fullVolume;
+      waterLevels.currentVolume = dataFromColumn($dataRow, 7);
+      if (callback) {
+        callback();
+      }
+    }
+  );
 }
 
 function round(num, precision) {
   return Math.round(num * Math.pow(10, precision)) / Math.pow(10, precision);
 }
 
-$.getJSON('http://anyorigin.com/dev/get?url=http%3A//hydromet.lcra.org/riverreport/report.aspx&callback=?', function(data) {
-  // remove images from scraped page, otherwise they'll 404 when we create the jquery object
-  var cleanHTML = data.contents.replace(/<img.*?\/>/g, '');
-  var $dataRow = $(cleanHTML).find('#GridView1 tr:nth-of-type(3)');
-  var maxLakeLevel = dataFromColumn($dataRow, 6);
-  var maxLakeMarker = 1.1 * maxLakeLevel;
-  var lakeHeight = dataFromColumn($dataRow, 7);
+function updateSwitch(type) {
+  var $switch = $('#display-switch');
+  $switch.find('.selected').removeClass('selected');
+  $switch.find('.' + type).addClass('selected');
+}
 
-  if (lakeHeight >= maxLakeLevel) {
-    document.querySelector('#status').textContent = 'Yup';
+function updateNotches(type) {
+  $('.water-level-marker').removeClass('with-depth with-volume').addClass('with-' + type);
+}
+
+function updatePercentage(percentageFull, percentageMax, remainingMessage) {
+  if (percentageFull >= 100) {
+    $('#status').text('YUP');
+    $('#remainder').empty();
   } else {
-    var waterLevel = document.querySelector('#water-level');
-    waterLevel.style.height = (100 * (lakeHeight / maxLakeMarker)) + '%';
-    waterLevel.style.maxHeight = '9999px';
-    document.querySelector('#remainder').textContent =
-      round(100 * (lakeHeight / maxLakeLevel), 1) + '% Full, ' +
-      round(100 * (1 - (lakeHeight / maxLakeLevel)), 1) + '% To Go';
+    $('#status').text('NOPE');
+    $('#remainder').text(remainingMessage);
   }
-});
+  $('#water-level')
+    .css('height', percentageMax + '%')
+    .css('max-height', 'none');
+}
+
+function displayDepth() {
+  updateSwitch('depth');
+  updateNotches('depth');
+  updatePercentage(
+    100 * (waterLevels.currentDepth / waterLevels.fullDepth),
+    100 * (waterLevels.currentDepth / waterLevels.maxDepth),
+    round((waterLevels.fullDepth - waterLevels.currentDepth), 1) + ' More Feet To Go'
+  );
+}
+
+function displayVolume() {
+  var percentageFull = 100 * (waterLevels.currentVolume / waterLevels.fullVolume);
+
+  updateSwitch('volume');
+  updateNotches('volume');
+  updatePercentage(
+    percentageFull,
+    100 * (waterLevels.currentVolume / waterLevels.maxVolume),
+    round(percentageFull, 1) + '% Full, ' + round(100 - percentageFull, 1) + '% To Go'
+  );
+}
+
+if (window.location.hash === '#volume') {
+  getLevels(displayVolume);
+} else {
+  getLevels(displayDepth);
+}
+
+$('#display-switch a').on('click', function(e) {
+  e.preventDefault();
+  var choice = $(this).data('choice');
+  if (choice === 'volume') {
+    displayVolume();
+  } else if (choice === 'depth') {
+    displayDepth();
+  }
+  window.location.hash = '#' + choice;
+})
