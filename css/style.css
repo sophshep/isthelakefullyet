@@ -48,9 +48,9 @@ body {
   background-size: 4em 2em;
   background-position: -1em -1em;
   background-repeat: repeat-x;
-  max-height: 0;
-  -webkit-transition: max-height 10s;
-  transition: max-height 10s;
+  max-height: 0 cubic-bezier(0, 0, 0.48, 0.8);
+  -webkit-transition: height 10s cubic-bezier(0, 0, 0.48, 0.8);
+  transition: height 10s;
   -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
   animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
 
