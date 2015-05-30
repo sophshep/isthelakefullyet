@@ -55,8 +55,7 @@ function updatePercentage(percentageFull, percentageMax, remainingMessage) {
     $('#remainder').text(remainingMessage);
   }
   $('#water-level')
-    .css('height', percentageMax + '%')
-    .css('max-height', 'none');
+    .css('height', percentageMax + '%');
 }
 
 function displayDepth() {
@@ -92,6 +91,19 @@ function loadPage() {
 loadPage();
 window.setInterval(loadPage, 5 * 60 * 1000); // refresh data every 5 minutes
 
+if ('replaceState' in history) {
+    window.replaceHash = function(newhash) {
+        if ((''+newhash).charAt(0) !== '#') newhash = '#' + newhash;
+        history.replaceState('', '', newhash);
+    }
+} else {
+    var hash = location.hash;
+    window.replaceHash = function(newhash) {
+        if (location.hash !== hash) history.back();
+        location.hash = newhash;
+    };
+}
+
 $('#display-switch a').on('click', function(e) {
   e.preventDefault();
   var choice = $(this).data('choice');
@@ -100,5 +112,5 @@ $('#display-switch a').on('click', function(e) {
   } else if (choice === 'depth') {
     displayDepth();
   }
-  window.location.hash = '#' + choice;
-})
+  window.replaceHash(choice);
+});
