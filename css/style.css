@@ -50,7 +50,7 @@ body {
   background-repeat: repeat-x;
   max-height: 0;
   -webkit-transition: height 10s cubic-bezier(0, 0, 0.48, 0.8);
-  transition: height 10s cubic-bezier(0, 0, 0.48, 0.8);;
+  transition: height 10s cubic-bezier(0, 0, 0.48, 0.8);
   -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
   animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
 
