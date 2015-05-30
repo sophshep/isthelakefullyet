@@ -55,8 +55,7 @@ function updatePercentage(percentageFull, percentageMax, remainingMessage) {
     $('#remainder').text(remainingMessage);
   }
   $('#water-level')
-    .css('height', percentageMax + '%')
-    .css('max-height', 'none');
+    .css('height', percentageMax + '%');
 }
 
 function displayDepth() {
