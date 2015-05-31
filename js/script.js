@@ -64,7 +64,7 @@ function displayDepth() {
   updatePercentage(
     100 * (waterLevels.currentDepth / waterLevels.fullDepth),
     100 * (waterLevels.currentDepth / waterLevels.maxDepth),
-    round((waterLevels.fullDepth - waterLevels.currentDepth), 1) + 'ft To Go'
+    round((waterLevels.fullDepth - waterLevels.currentDepth), 1) + ' ft. To Go'
   );
 }
 
