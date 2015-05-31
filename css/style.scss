@@ -58,8 +58,8 @@ body {
   background-position: -1em -1em;
   background-repeat: repeat-x;
   height: 0;
-  -webkit-transition: height 10s;
-  transition: height 10s;
+  -webkit-transition: height 2s;
+  transition: height 2s;
   -webkit-animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
   animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
 }
@@ -152,6 +152,7 @@ body {
       top: 9px;
       left: 22px;
       width: 10em;
+
     }
   }
 
@@ -187,7 +188,7 @@ body {
     }
     .level-capacity {
       bottom: (($fullDepth / $maxDepth) * 100) * 1%;
-      font-weight: normal;
+      //font-weight: normal;
     }
 
     @media screen and (min-height: 600px) {
@@ -273,16 +274,33 @@ body {
 
 #display-switch {
   position: fixed;
-  top: 10px;
+  top: 20px;
   right: 10px;
 
   a {
     cursor: pointer;
-    color: $waterBlue;
-    text-shadow: 0px 1px 1px rgba(255,255,255,.8);
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
 
     &.selected {
-      color: #000;
+      cursor: default;
+      background-color: $waterBlue;
+      color: #fff;
+      border-radius: 20px;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -8px;
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: $waterBlue transparent;
+        display: block;
+        width: 0;
+      }
     }
   }
 }

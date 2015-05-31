@@ -49,8 +49,8 @@ body {
   background-position: -1em -1em;
   background-repeat: repeat-x;
   height: 0;
-  -webkit-transition: height 10s;
-  transition: height 10s;
+  -webkit-transition: height 2s;
+  transition: height 2s;
   -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
   animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
 
@@ -137,8 +137,7 @@ body {
       display: none;
       bottom: 95.89041%; }
     .water-level-marker .depth .level-capacity {
-      bottom: 93.28767%;
-      font-weight: normal; }
+      bottom: 93.28767%; }
     @media screen and (min-height: 600px) {
       .water-level-marker .depth .level-700 {
         display: block; } }
@@ -184,13 +183,29 @@ body {
 
 #display-switch {
   position: fixed;
-  top: 10px;
+  top: 20px;
   right: 10px; }
   #display-switch a {
     cursor: pointer;
-    color: #09c;
-    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8); }
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000; }
     #display-switch a.selected {
-      color: #000; }
+      cursor: default;
+      background-color: #09c;
+      color: #fff;
+      border-radius: 20px;
+      position: relative; }
+      #display-switch a.selected:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -8px;
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: #09c transparent;
+        display: block;
+        width: 0; }
 
 /*# sourceMappingURL=style.css.map */
