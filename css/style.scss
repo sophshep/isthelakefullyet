@@ -151,7 +151,7 @@ body {
       position: relative;
       top: 9px;
       left: 22px;
-      width: 10em;
+      width: 12em;
 
     }
   }
@@ -159,40 +159,56 @@ body {
   .depth {
     display: none;
 
+    $minDepth: 441;
+    $emptyDepth: 471;
     $fullDepth: 681;
-    $maxDepth: 730;
-    // how often you want a notch / total height
-    $depthNotch: ((100 / $maxDepth) * 100) * 1%;
+    $maxDepth: 711;
+    @function depthNotchHeight($height) {
+      @return ($height - $minDepth)/($maxDepth - $minDepth) * 100%
+    }
 
-    .level-100 {
-      bottom: $depthNotch;
+    .level-0 {
+      bottom: depthNotchHeight(471);
     }
-    .level-200 {
-      bottom: $depthNotch * 2;
+    .level-1 {
+      bottom: depthNotchHeight(501);
     }
-    .level-300 {
-      bottom: $depthNotch * 3;
+    .level-2 {
+      bottom: depthNotchHeight(531);
     }
-    .level-400 {
-      bottom: $depthNotch * 4;
+    .level-3 {
+      bottom: depthNotchHeight(561);
     }
-    .level-500 {
-      bottom: $depthNotch * 5;
+    .level-4 {
+      bottom: depthNotchHeight(591);
     }
-    .level-600 {
-      bottom: $depthNotch * 6;
+    .level-5 {
+      bottom: depthNotchHeight(621);
     }
-    .level-700 {
+    .level-6 {
+      bottom: depthNotchHeight(651);
+    }
+    .level-7 {
+      bottom: depthNotchHeight(681);
+    }
+    .level-b {
+      bottom: depthNotchHeight(541);
+    }
+    .level-c {
+      bottom: depthNotchHeight(611);
+    }
+    .sevenths {
       display: none;
-      bottom: $depthNotch * 7;
     }
-    .level-capacity {
-      bottom: (($fullDepth / $maxDepth) * 100) * 1%;
-      //font-weight: normal;
+    .thirds {
+      display: block;
     }
 
     @media screen and (min-height: 600px) {
-      .level-700 {
+      .thirds {
+        display: none;
+      }
+      .sevenths {
         display: block;
       }
     }
