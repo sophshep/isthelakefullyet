@@ -84,11 +84,13 @@ body {
   text-align: center;
   position: absolute;
   bottom: 20px;
-  left: 20%;
-  width: 70%;
+  left: 85px;
+  width: 75%;
   z-index: 100;
   color: #00394c;
   font-size: 14px; }
+  #donate p {
+    margin: 1em auto; }
   #donate a {
     color: #00394c;
     text-decoration: none;
@@ -117,6 +119,11 @@ body {
       top: 9px;
       left: 22px;
       width: 12em; }
+      @media all and (min-width: 600px) and (min-height: 450px) {
+        .water-level-marker [class*="level-"] span.two-line {
+          top: 16px; }
+          .water-level-marker [class*="level-"] span.two-line br {
+            display: none; } }
   .water-level-marker .depth {
     display: none; }
     .water-level-marker .depth .level-0 {
