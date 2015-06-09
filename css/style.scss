@@ -1,3 +1,5 @@
+$waterBlue: #09c;
+
 html, body {
  height: 100%;
  width: 100%; 
@@ -6,58 +8,299 @@ html, body {
 
 body {
   position: relative;
-  font-family: helvetica;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #text {
-  text-transform: uppercase;
   display: block;
   text-align: center;
-  width: 100%;
+  width: 90%;
   position: absolute;
-  font-weight: bold;
   z-index: 100;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  left: 10%;
   text-shadow: 0px 1px 1px rgba(204,204,204,.8);
-  transform: translate(-50%, -50%);
+  font-weight: 400;
+  font-size: 20px;
 }
 
 #status {
-  font-size: 5em;
+  font-size: 100px;
   display: block;
+  font-weight: 800;
+  line-height: 1;
+  font-family: 'Anton', Impact, Helvetica, Verdana, sans-serif;
+  color: #fff;
+  text-shadow: 0px -1px 1px rgba(51, 51, 51, .3);
+}
+
+@media screen and (min-width: 450px) {
+  #text {
+    width: 100%;
+    left: 0;
+    font-size: 34px;
+    top: 35%;
+  }
+  #status {
+    font-size: 170px;
+  }
 }
 
 #water-level {
   position: absolute;
-  bottom: 0;
+  bottom: 1em; //to counteract the wave height so it looks accurate
   width: 100%;
   left: 0;
-  background: #09c;
+  background: $waterBlue;
+  background-image: -webkit-radial-gradient(white 70%, transparent 87%);
   background-image: radial-gradient(white 70%, transparent 87%);
   background-size:4em 2em;
   background-position: -1em -1em;
   background-repeat: repeat-x;
-  max-height: 0;
-  transition: max-height 10s;
+  height: 0;
+  -webkit-transition: height 2s;
+  transition: height 2s;
+  -webkit-animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
   animation: waves 9s cubic-bezier(0.000, 0.000, 0.480, .8) infinite;
-} 
+}
 
-@keyframes waves {
+
+#blue-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 1em;
+  background: $waterBlue;
+}
+
+@-webkit-keyframes waves {
   from {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: -1em -1em;
   }
   50% {
-    background-color: #08d;
     background-size:4em 1.55em;
   }
   to {  
-    background-color: #09c;
     background-size:4em 1.9em;
     background-position: 3em -1em;
 
   }
 }
 
+@keyframes waves {
+  from {  
+    background-size:4em 1.9em;
+    background-position: -1em -1em;
+  }
+  50% {
+    background-size:4em 1.55em;
+  }
+  to {  
+    background-size:4em 1.9em;
+    background-position: 3em -1em;
+
+  }
+}
+
+#donate {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 15%;
+  width: 80%;
+  z-index: 100;
+  color: #00394c;
+  font-size: 14px;
+
+  a {
+    color: #00394c;
+    text-decoration: none;
+    border-bottom: 2px solid #00698c;
+    &:hover {
+      border-bottom: 2px solid #000;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) { 
+  #donate { 
+    font-size: 18px;
+    left: 15%;
+    width: 70%;
+  }
+}
+
+.water-level-marker {
+  z-index: 2000;
+  position: fixed;
+  text-shadow: 0px 1px 1px rgba(204,204,204,.8);
+  font-weight: 800;
+  color: #00394c;
+
+  [class*="level-"] {
+    position: fixed;
+    font-size: 14px;
+    line-height: 1;
+    border-bottom: 3px solid #000;
+    width: 15px;
+
+    span {
+      display: block;
+      position: relative;
+      top: 9px;
+      left: 22px;
+      width: 10em;
+
+    }
+  }
+
+  .depth {
+    display: none;
+
+    $fullDepth: 681;
+    $maxDepth: 730;
+    // how often you want a notch / total height
+    $depthNotch: ((100 / $maxDepth) * 100) * 1%;
+
+    .level-100 {
+      bottom: $depthNotch;
+    }
+    .level-200 {
+      bottom: $depthNotch * 2;
+    }
+    .level-300 {
+      bottom: $depthNotch * 3;
+    }
+    .level-400 {
+      bottom: $depthNotch * 4;
+    }
+    .level-500 {
+      bottom: $depthNotch * 5;
+    }
+    .level-600 {
+      bottom: $depthNotch * 6;
+    }
+    .level-700 {
+      display: none;
+      bottom: $depthNotch * 7;
+    }
+    .level-capacity {
+      bottom: (($fullDepth / $maxDepth) * 100) * 1%;
+      //font-weight: normal;
+    }
+
+    @media screen and (min-height: 600px) {
+      .level-700 {
+        display: block;
+      }
+    }
+  }
+
+  .volume {
+    display: none;
+
+    .tenths {
+      display: none;
+    }
+    .quarters {
+      display: block;
+    }
+
+    $maxVolume: 107.2;
+    // how often you want a notch / total height
+    $volumeNotch: ((10 / $maxVolume) * 100) * 1%;
+
+    .level-10 {
+      bottom: $volumeNotch;
+    }
+    .level-20 {
+      bottom: $volumeNotch * 2;
+    }
+    .level-25 {
+      bottom: $volumeNotch * 2.5;
+    }
+    .level-30 {
+      bottom: $volumeNotch * 3;
+    }
+    .level-40 {
+      bottom: $volumeNotch * 4;
+    }
+    .level-50 {
+      bottom: $volumeNotch * 5;
+    }
+    .level-60 {
+      bottom: $volumeNotch * 6;
+    }
+    .level-70 {
+      bottom: $volumeNotch * 7;
+    }
+    .level-75 {
+      bottom: $volumeNotch * 7.5;
+    }
+    .level-80 {
+      bottom: $volumeNotch * 8;
+    }
+    .level-90 {
+      bottom: $volumeNotch * 9;
+    }
+    .level-capacity {
+      bottom: ((100 / $maxVolume) * 100) * 1%;
+    }
+
+    @media screen and (min-height: 600px) {
+      .quarters {
+        display: none;
+      }
+      .tenths {
+        display: block;
+      }
+    }
+  }
+
+  &.with-depth {
+    .depth {
+      display: block;
+    }
+  }
+
+  &.with-volume {
+    .volume {
+      display: block;
+    }
+  }
+}
+
+#display-switch {
+  position: fixed;
+  top: 20px;
+  right: 10px;
+
+  a {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
+
+    &.selected {
+      cursor: default;
+      background-color: $waterBlue;
+      color: #fff;
+      border-radius: 20px;
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -8px;
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: $waterBlue transparent;
+        display: block;
+        width: 0;
+      }
+    }
+  }
+}

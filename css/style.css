@@ -1,88 +1,211 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0;
-}
+  margin: 0; }
 
 body {
   position: relative;
-  font-family: helvetica;
-}
+  font-family: 'Open Sans', sans-serif; }
 
 #text {
-  text-transform: uppercase;
   display: block;
   text-align: center;
-  width: 100%;
+  width: 90%;
   position: absolute;
-  font-weight: bold;
   z-index: 100;
-  top: 50%;
-  left: 50%;
-  text-shadow: 0px 1px 1px rgba(204,204,204,.8);
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
+  top: 30%;
+  left: 10%;
+  text-shadow: 0px 1px 1px rgba(204, 204, 204, 0.8);
+  font-weight: 400;
+  font-size: 20px; }
 
 #status {
-  font-size: 5em;
+  font-size: 100px;
   display: block;
-}
+  font-weight: 800;
+  line-height: 1;
+  font-family: 'Anton', Impact, Helvetica, Verdana, sans-serif;
+  color: #fff;
+  text-shadow: 0px -1px 1px rgba(51, 51, 51, 0.3); }
 
+@media screen and (min-width: 450px) {
+  #text {
+    width: 100%;
+    left: 0;
+    font-size: 34px;
+    top: 35%; }
+
+  #status {
+    font-size: 170px; } }
 #water-level {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+  left: 0;
+  background: #09c;
+  background-image: -webkit-radial-gradient(white 70%, transparent 87%);
+  background-image: radial-gradient(white 70%, transparent 87%);
+  background-size: 4em 2em;
+  background-position: -1em -1em;
+  background-repeat: repeat-x;
+  height: 0;
+  -webkit-transition: height 2s;
+  transition: height 2s;
+  -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
+  animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
+
+#blue-fill {
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
-  background: #09c;
-  background-image: -webkit-radial-gradient(#ffffff 70%, rgba(0, 0, 0, 0) 87%);
-  background-image: radial-gradient(#ffffff 70%, rgba(0, 0, 0, 0) 87%);
-  background-size: 4em 2em;
-  background-position: -1em -1em;
-  background-repeat: repeat-x;
-  max-height: 0;
-  -webkit-transition: max-height 10s;
-          transition: max-height 10s;
-  -webkit-animation: waves 7s cubic-bezier(0, 0, 0.48, 0.8) infinite;
-          animation: waves 7s cubic-bezier(0, 0, 0.48, 0.8) infinite;
-}
+  height: 1em;
+  background: #09c; }
 
 @-webkit-keyframes waves {
   from {
-    background-color: #09c;
     background-size: 4em 1.9em;
-    background-position: -1em -1em;
-  }
+    background-position: -1em -1em; }
   50% {
-    background-color: #08d;
-    background-size: 4em 1.55em;
-  }
+    background-size: 4em 1.55em; }
   to {
-    background-color: #09c;
     background-size: 4em 1.9em;
-    background-position: 3em -1em;
-  }
-}
-
+    background-position: 3em -1em; } }
 @keyframes waves {
   from {
-    background-color: #09c;
     background-size: 4em 1.9em;
-    background-position: -1em -1em;
-  }
+    background-position: -1em -1em; }
   50% {
-    background-color: #08d;
-    background-size: 4em 1.55em;
-  }
+    background-size: 4em 1.55em; }
   to {
-    background-color: #09c;
     background-size: 4em 1.9em;
-    background-position: 3em -1em;
-  }
-}
+    background-position: 3em -1em; } }
+#donate {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 15%;
+  width: 80%;
+  z-index: 100;
+  color: #00394c;
+  font-size: 14px; }
+  #donate a {
+    color: #00394c;
+    text-decoration: none;
+    border-bottom: 2px solid #00698c; }
+    #donate a:hover {
+      border-bottom: 2px solid #000; }
 
+@media screen and (min-width: 600px) {
+  #donate {
+    font-size: 18px;
+    left: 15%;
+    width: 70%; } }
+.water-level-marker {
+  z-index: 2000;
+  position: fixed;
+  text-shadow: 0px 1px 1px rgba(204, 204, 204, 0.8);
+  font-weight: 800;
+  color: #00394c; }
+  .water-level-marker [class*="level-"] {
+    position: fixed;
+    font-size: 14px;
+    line-height: 1;
+    border-bottom: 3px solid #000;
+    width: 15px; }
+    .water-level-marker [class*="level-"] span {
+      display: block;
+      position: relative;
+      top: 9px;
+      left: 22px;
+      width: 10em; }
+  .water-level-marker .depth {
+    display: none; }
+    .water-level-marker .depth .level-100 {
+      bottom: 13.69863%; }
+    .water-level-marker .depth .level-200 {
+      bottom: 27.39726%; }
+    .water-level-marker .depth .level-300 {
+      bottom: 41.09589%; }
+    .water-level-marker .depth .level-400 {
+      bottom: 54.79452%; }
+    .water-level-marker .depth .level-500 {
+      bottom: 68.49315%; }
+    .water-level-marker .depth .level-600 {
+      bottom: 82.19178%; }
+    .water-level-marker .depth .level-700 {
+      display: none;
+      bottom: 95.89041%; }
+    .water-level-marker .depth .level-capacity {
+      bottom: 93.28767%; }
+    @media screen and (min-height: 600px) {
+      .water-level-marker .depth .level-700 {
+        display: block; } }
+  .water-level-marker .volume {
+    display: none; }
+    .water-level-marker .volume .tenths {
+      display: none; }
+    .water-level-marker .volume .quarters {
+      display: block; }
+    .water-level-marker .volume .level-10 {
+      bottom: 9.32836%; }
+    .water-level-marker .volume .level-20 {
+      bottom: 18.65672%; }
+    .water-level-marker .volume .level-25 {
+      bottom: 23.3209%; }
+    .water-level-marker .volume .level-30 {
+      bottom: 27.98507%; }
+    .water-level-marker .volume .level-40 {
+      bottom: 37.31343%; }
+    .water-level-marker .volume .level-50 {
+      bottom: 46.64179%; }
+    .water-level-marker .volume .level-60 {
+      bottom: 55.97015%; }
+    .water-level-marker .volume .level-70 {
+      bottom: 65.29851%; }
+    .water-level-marker .volume .level-75 {
+      bottom: 69.96269%; }
+    .water-level-marker .volume .level-80 {
+      bottom: 74.62687%; }
+    .water-level-marker .volume .level-90 {
+      bottom: 83.95522%; }
+    .water-level-marker .volume .level-capacity {
+      bottom: 93.28358%; }
+    @media screen and (min-height: 600px) {
+      .water-level-marker .volume .quarters {
+        display: none; }
+      .water-level-marker .volume .tenths {
+        display: block; } }
+  .water-level-marker.with-depth .depth {
+    display: block; }
+  .water-level-marker.with-volume .volume {
+    display: block; }
 
-
+#display-switch {
+  position: fixed;
+  top: 20px;
+  right: 10px; }
+  #display-switch a {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000; }
+    #display-switch a.selected {
+      cursor: default;
+      background-color: #09c;
+      color: #fff;
+      border-radius: 20px;
+      position: relative; }
+      #display-switch a.selected:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        margin-left: -8px;
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: #09c transparent;
+        display: block;
+        width: 0; }
 
 /*# sourceMappingURL=style.css.map */

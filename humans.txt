@@ -1,0 +1,22 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# MADE OF PEOPLE @ATXbuilt
+
+    Greg Storey -- @brilliantcrank
+    Dave Rupert -- @davatron5000
+    Sophie Shepheard -- @sophshepherd
+    Christopher Schmitt -- @teleject
+
+# THANKS
+
+    Tom Grochowicz -- @tgrochowicz
+    Lower Colorado River Authority -- @lcra
+    Trey Philips -- @treyp
+
+# TECHNOLOGY COLOPHON
+
+    HTML, CSS, JavaScript
+    Mother Nature
+
+    Source: https://github.com/sophshep/isthelakefullyet

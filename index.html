@@ -4,30 +4,123 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Is The Lake Full Yet?</title>
-        <meta name="description" content="Are you wondering about the current status of Lake Travis?" />
+        <meta http-equiv="refresh" content="43200" />
+        <meta name="Description" content="Are you wondering about the current status of Lake Travis?" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="Is the Lake Full Yet?" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Are you wondering about the current status of Lake Travis? This central Texas reservoir on the Colorado River is considered 'full'  or 'at maximum desired capacity' when the lake's water level is at 681 feet (208 m) above mean sea level (msl)." />
+        <meta property="og:determiner" content="the" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content="http://isthelakefullyet.com" />
+        <meta property="og:image" content="http://isthelakefullyet.com/img/og-image-1200.jpg" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@atxbuilt">
+        <meta name="twitter:title" content="Is the Lake Full Yet?">
+        <meta name="twitter:description" content="Are you wondering about the current status of Lake Travis? This central Texas reservoir on the Colorado River is considered 'full' when the lake's water level is at 681 feet above mean sea level.">
+        <meta name="twitter:image" content="http://isthelakefullyet.com/img/og-image-1200.jpg">  
+        <meta name="apple-mobile-web-app-title" content="Full Lake?" />
+        <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
         <link rel="stylesheet" href="css/style.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
-        <script src="js/script.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
     </head>
     <body>
 
         <div id="text">
-          <span id="status">NOPE</span>
+          <span id="status">Loading&hellip;</span>
           <span id="remainder"></span>
         </div>
+        <div id="donate">
+          <p>
+            Like all Central Texas residents, we're excited to see the lake fill up, but all this rain means there's been some flooding too. Please consider <a href="http://www.adrntx.org/index.php/ways-to-give/central-tx-floods-relief-fund/">donating to the Central TX Floods Relief Fund</a>.
+          </p>
+        </div>
+        <div class="water-level-marker">
+          <div class="depth">
+            <div class="level-100">
+              <span>100</span>
+            </div>
+            <div class="level-200">
+              <span>200</span>
+            </div>
+            <div class="level-300">
+              <span>300</span>
+            </div>
+            <div class="level-400">
+              <span>400</span>
+            </div>
+            <div class="level-500">
+              <span>500</span>
+            </div>
+            <div class="level-600">
+              <span>600</span>
+            </div>
+            <div class="level-capacity">
+              <span>681 ft. (Lake Is Full)</span>
+            </div>
+          </div>
+          <div class="volume">
+            <div class="level-10 tenths">
+              <span>10%</span>
+            </div>
+            <div class="level-20 tenths">
+              <span>20%</span>
+            </div>
+            <div class="level-25 quarters">
+              <span>25%</span>
+            </div>
+            <div class="level-30 tenths">
+              <span>30%</span>
+            </div>
+            <div class="level-40 tenths">
+              <span>40%</span>
+            </div>
+            <div class="level-50 tenths quarters">
+              <span>50%</span>
+            </div>
+            <div class="level-60 tenths">
+              <span>60%</span>
+            </div>
+            <div class="level-70 tenths">
+              <span>70%</span>
+            </div>
+            <div class="level-75 quarters">
+              <span>75%</span>
+            </div>
+            <div class="level-80 tenths">
+              <span>80%</span>
+            </div>
+            <div class="level-90 tenths">
+              <span>90%</span>
+            </div>
+            <div class="level-capacity tenths quarters">
+              <span>100% (Lake Is Full)</span>
+            </div>
+          </div>
+        </div>
         <div id="water-level"></div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <div id="blue-fill"></div>
+        <div id="display-switch">
+          <a class="depth" data-choice="depth">Depth</a>
+          <a class="volume" data-choice="volume">Volume</a>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+        <script src="js/script.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-408491-11', 'auto');
-  ga('send', 'pageview');
+          ga('create', 'UA-408491-11', 'auto');
+          ga('send', 'pageview');
 
-</script>
+        </script>
     </body>
 </html>
