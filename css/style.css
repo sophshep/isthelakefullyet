@@ -126,34 +126,28 @@ body {
             display: none; } }
   .water-level-marker .depth {
     display: none; }
-    .water-level-marker .depth .level-0 {
-      bottom: 11.11111%; }
     .water-level-marker .depth .level-1 {
-      bottom: 22.22222%; }
+      bottom: 12.5%; }
     .water-level-marker .depth .level-2 {
-      bottom: 33.33333%; }
+      bottom: 25%; }
     .water-level-marker .depth .level-3 {
-      bottom: 44.44444%; }
+      bottom: 37.5%; }
     .water-level-marker .depth .level-4 {
-      bottom: 55.55556%; }
+      bottom: 50%; }
     .water-level-marker .depth .level-5 {
-      bottom: 66.66667%; }
+      bottom: 62.5%; }
     .water-level-marker .depth .level-6 {
-      bottom: 77.77778%; }
+      bottom: 75%; }
     .water-level-marker .depth .level-7 {
-      bottom: 88.88889%; }
-    .water-level-marker .depth .level-b {
-      bottom: 37.03704%; }
-    .water-level-marker .depth .level-c {
-      bottom: 62.96296%; }
-    .water-level-marker .depth .sevenths {
+      bottom: 87.5%; }
+    .water-level-marker .depth .sixths {
       display: none; }
     .water-level-marker .depth .thirds {
       display: block; }
     @media screen and (min-height: 600px) {
       .water-level-marker .depth .thirds {
         display: none; }
-      .water-level-marker .depth .sevenths {
+      .water-level-marker .depth .sixths {
         display: block; } }
   .water-level-marker .volume {
     display: none; }

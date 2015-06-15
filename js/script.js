@@ -1,7 +1,7 @@
 var waterLevels = {
   currentDepth: null,
-  minDepth: 441,
-  emptyDepth: 471,
+  minDepth: 471,
+  emptyDepth: 501,
   fullDepth: 681,
   maxDepth: 711,
   currentVolume: null,

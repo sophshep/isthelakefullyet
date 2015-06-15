@@ -170,17 +170,14 @@ body {
   .depth {
     display: none;
 
-    $minDepth: 441;
-    $emptyDepth: 471;
+    $minDepth: 471;
+    $emptyDepth: 501;
     $fullDepth: 681;
     $maxDepth: 711;
     @function depthNotchHeight($height) {
       @return ($height - $minDepth)/($maxDepth - $minDepth) * 100%
     }
 
-    .level-0 {
-      bottom: depthNotchHeight(471);
-    }
     .level-1 {
       bottom: depthNotchHeight(501);
     }
@@ -202,13 +199,7 @@ body {
     .level-7 {
       bottom: depthNotchHeight(681);
     }
-    .level-b {
-      bottom: depthNotchHeight(541);
-    }
-    .level-c {
-      bottom: depthNotchHeight(611);
-    }
-    .sevenths {
+    .sixths {
       display: none;
     }
     .thirds {
@@ -219,7 +210,7 @@ body {
       .thirds {
         display: none;
       }
-      .sevenths {
+      .sixths {
         display: block;
       }
     }
