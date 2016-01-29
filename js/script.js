@@ -1,7 +1,9 @@
 var waterLevels = {
   currentDepth: null,
+  minDepth: 471,
+  emptyDepth: 501,
   fullDepth: 681,
-  maxDepth: 730,
+  maxDepth: 711,
   currentVolume: null,
   fullVolume: null,
   maxVolume: null
@@ -14,17 +16,13 @@ function dataFromColumn($row, column) {
 }
 
 function getLevels(callback) {
-  var dataURI = 'http://anyorigin.com/dev/get/?url=' +
-    encodeURIComponent('http://hydromet.lcra.org/riverreport/report.aspx') +
-    '&callback=?';
+  var dataURI = 'http://lake-travis-water-levels.herokuapp.com/lakedata';
   $.getJSON(dataURI, function(data) {
-      // remove images from scraped page, otherwise they'll 404 when we create the jquery object
-      var cleanHTML = data.contents.replace(/<img.*?\/>/g, '');
-      var $dataRow = $(cleanHTML).find('#GridView1 tr:nth-of-type(3)');
-      waterLevels.currentDepth = dataFromColumn($dataRow, 3);
-      waterLevels.fullVolume = dataFromColumn($dataRow, 6);
-      waterLevels.maxVolume = 1.072 * waterLevels.fullVolume;
-      waterLevels.currentVolume = dataFromColumn($dataRow, 7);
+      waterLevels.currentDepth = data.currentDepth;
+      waterLevels.fullVolume = data.fullVolume;
+      waterLevels.maxVolume = data.maxVolume;
+      waterLevels.currentVolume = data.currentVolume;
+
       if (callback) {
         callback();
       }
@@ -63,7 +61,7 @@ function displayDepth() {
   updateNotches('depth');
   updatePercentage(
     100 * (waterLevels.currentDepth / waterLevels.fullDepth),
-    100 * (waterLevels.currentDepth / waterLevels.maxDepth),
+    100 * ((waterLevels.currentDepth - waterLevels.minDepth) / (waterLevels.maxDepth - waterLevels.minDepth)),
     round((waterLevels.fullDepth - waterLevels.currentDepth), 1) + 'ft To Go'
   );
 }
