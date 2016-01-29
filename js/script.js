@@ -1,7 +1,9 @@
 var waterLevels = {
   currentDepth: null,
+  minDepth: 471,
+  emptyDepth: 501,
   fullDepth: 681,
-  maxDepth: 730,
+  maxDepth: 711,
   currentVolume: null,
   fullVolume: null,
   maxVolume: null
@@ -59,7 +61,7 @@ function displayDepth() {
   updateNotches('depth');
   updatePercentage(
     100 * (waterLevels.currentDepth / waterLevels.fullDepth),
-    100 * (waterLevels.currentDepth / waterLevels.maxDepth),
+    100 * ((waterLevels.currentDepth - waterLevels.minDepth) / (waterLevels.maxDepth - waterLevels.minDepth)),
     round((waterLevels.fullDepth - waterLevels.currentDepth), 1) + 'ft To Go'
   );
 }

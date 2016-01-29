@@ -84,11 +84,13 @@ body {
   text-align: center;
   position: absolute;
   bottom: 20px;
-  left: 15%;
-  width: 80%;
+  left: 85px;
+  width: 75%;
   z-index: 100;
   color: #00394c;
   font-size: 14px; }
+  #donate p {
+    margin: 1em auto; }
   #donate a {
     color: #00394c;
     text-decoration: none;
@@ -98,9 +100,7 @@ body {
 
 @media screen and (min-width: 600px) {
   #donate {
-    font-size: 18px;
-    left: 15%;
-    width: 70%; } }
+    font-size: 18px; } }
 .water-level-marker {
   z-index: 2000;
   position: fixed;
@@ -118,28 +118,36 @@ body {
       position: relative;
       top: 9px;
       left: 22px;
-      width: 10em; }
+      width: 12em; }
+      @media all and (min-width: 600px) and (min-height: 450px) {
+        .water-level-marker [class*="level-"] span.two-line {
+          top: 16px; }
+          .water-level-marker [class*="level-"] span.two-line br {
+            display: none; } }
   .water-level-marker .depth {
     display: none; }
-    .water-level-marker .depth .level-100 {
-      bottom: 13.69863%; }
-    .water-level-marker .depth .level-200 {
-      bottom: 27.39726%; }
-    .water-level-marker .depth .level-300 {
-      bottom: 41.09589%; }
-    .water-level-marker .depth .level-400 {
-      bottom: 54.79452%; }
-    .water-level-marker .depth .level-500 {
-      bottom: 68.49315%; }
-    .water-level-marker .depth .level-600 {
-      bottom: 82.19178%; }
-    .water-level-marker .depth .level-700 {
-      display: none;
-      bottom: 95.89041%; }
-    .water-level-marker .depth .level-capacity {
-      bottom: 93.28767%; }
+    .water-level-marker .depth .level-1 {
+      bottom: 12.5%; }
+    .water-level-marker .depth .level-2 {
+      bottom: 25%; }
+    .water-level-marker .depth .level-3 {
+      bottom: 37.5%; }
+    .water-level-marker .depth .level-4 {
+      bottom: 50%; }
+    .water-level-marker .depth .level-5 {
+      bottom: 62.5%; }
+    .water-level-marker .depth .level-6 {
+      bottom: 75%; }
+    .water-level-marker .depth .level-7 {
+      bottom: 87.5%; }
+    .water-level-marker .depth .sixths {
+      display: none; }
+    .water-level-marker .depth .thirds {
+      display: block; }
     @media screen and (min-height: 600px) {
-      .water-level-marker .depth .level-700 {
+      .water-level-marker .depth .thirds {
+        display: none; }
+      .water-level-marker .depth .sixths {
         display: block; } }
   .water-level-marker .volume {
     display: none; }
