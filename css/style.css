@@ -13,11 +13,13 @@ body {
   width: 90%;
   position: absolute;
   z-index: 100;
-  top: 30%;
+  top: 50%;
+  margin-top: -65px;
   left: 10%;
   text-shadow: 0px 1px 1px rgba(204, 204, 204, 0.8);
   font-weight: 400;
-  font-size: 20px; }
+  font-size: 20px;
+  line-height: 30px; }
 
 #status {
   font-size: 100px;
@@ -28,12 +30,13 @@ body {
   color: #fff;
   text-shadow: 0px -1px 1px rgba(51, 51, 51, 0.3); }
 
-@media screen and (min-width: 450px) {
+@media all and (min-width: 600px) and (min-height: 450px) {
   #text {
     width: 100%;
     left: 0;
+    margin-top: -107px;
     font-size: 34px;
-    top: 35%; }
+    line-height: 44px; }
 
   #status {
     font-size: 170px; } }
@@ -88,7 +91,7 @@ body {
   transform: translateX(-50%);
   z-index: 100;
   color: #00394c;
-  font-size: 14px; }
+  font-size: 13px; }
   #donate p {
     margin: 1em auto; }
   #donate a {
@@ -98,7 +101,7 @@ body {
     #donate a:hover {
       border-bottom: 2px solid #000; }
 
-@media screen and (min-width: 600px) {
+@media all and (min-width: 600px) and (min-height: 450px) {
   #donate {
     font-size: 18px; } }
 .water-level-marker {
@@ -179,7 +182,7 @@ body {
       bottom: 83.95522%; }
     .water-level-marker .volume .level-capacity {
       bottom: 93.28358%; }
-    @media screen and (min-height: 600px) {
+    @media all and (min-height: 600px) {
       .water-level-marker .volume .quarters {
         display: none; }
       .water-level-marker .volume .tenths {
@@ -197,12 +200,12 @@ body {
     cursor: pointer;
     padding: 5px 10px;
     background-color: #fff;
+    border-radius: 20px;
     color: #000; }
     #display-switch a.selected {
       cursor: default;
       background-color: #09c;
       color: #fff;
-      border-radius: 20px;
       position: relative; }
       #display-switch a.selected:after {
         content: "";
